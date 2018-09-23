@@ -1,0 +1,1065 @@
+
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+    <title>michael&#39;s note</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="michaelcheng">
+    
+
+    
+    <meta property="og:type" content="website">
+<meta property="og:title" content="michael&#39;s note">
+<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:site_name" content="michael&#39;s note">
+<meta property="og:locale" content="default">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="michael&#39;s note">
+
+    
+    <link rel="alternative" href="/atom.xml" title="michael&#39;s note" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="michael&#39;s note" title="michael&#39;s note"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="michael&#39;s note">michael&#39;s note</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:yoursite.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main">
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2018/09/23/MongoDB初探（0）--安装/" title="MongoDB初探（0）--安装" itemprop="url">MongoDB初探（0）--安装</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="michaelcheng" target="_blank" itemprop="author">michaelcheng</a>
+		
+  <p class="article-time">
+    <time datetime="2018-09-23T06:12:20.256Z" itemprop="datePublished"> Published 2018-09-23</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h1 id="MongoDB初探（0）–安装"><a href="#MongoDB初探（0）–安装" class="headerlink" title="MongoDB初探（0）–安装"></a>MongoDB初探（0）–安装</h1><p>早就听说MongoDB的大名了，苦于要学的东西太多，最近才抽空看一下MongoDB实战，顺便记录一下吧。</p>
+<p>安装环境：ubuntu12.04LTS<br>1.命令行导入MongoDB public GPG Key:</p>
+<pre><code>sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10
+</code></pre><p> 2.生成MongoDB列表文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">echo &quot;deb http://repo.mongodb.org/apt/ubuntu &quot;$(lsb_release -sc)&quot;</span><br><span class="line">/mongodb-org/3.0 multiverse&quot;|sudotee/etc/apt/sources.list.d/mongodb-org-3.0.list</span><br></pre></td></tr></table></figure></p>
+<p>3.重载本地包数据库</p>
+<pre><code>sudo apt-get update
+</code></pre><p>4.安装MongoDB服务器端</p>
+<pre><code>sudo apt-get install mongodb-10gen
+</code></pre><p> 安装完成后，MongoDB服务器会自动启动，我们检查MongoDB服务器程序</p>
+<blockquote>
+<ul>
+<li>检查MongoDB服务器系统进程<br>ps -aux|grep mongo</li>
+<li>通过启动命令检查MongoDB服务器状态<br>netstat -nlt|grep 27017</li>
+<li>通过启动命令检查MongoDB服务器状态<br>sudo /etc/init.d/mongodb status</li>
+<li>通过系统服务检查MongoDB服务器状态<br>sudo service mongodb status</li>
+</ul>
+</blockquote>
+<p>此外还可以通过web的控制台，查看MongoDB服务器的状态。在浏览器输入 <a href="http://ip:28017" target="_blank" rel="noopener">http://ip:28017</a> ，就可以打开通过web的控制台了。</p>
+<p>5.通过命令行客户端访问MongoDB<br>安装MongoDB服务器，会自动地一起安装MongoDB命令行客户端程序。在本机输入mongo命令就可以启动，客户端程序访问MongoDB服务器。</p>
+<pre><code>mongo
+</code></pre><p> MongoDB服务器，默认情况下是允许外部访问的。这样单节的MongoDB，我们已经成功地安装在Ubuntu系统中。</p>
+<p><em>本人也是初学，如有不足之处，还望大家指正，希望和大家一起交流学习，共同进步。</em></p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Nosql/">Nosql</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/MongoDB/">MongoDB</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2018/09/23/python多线程VS多进程/" title="python多线程 VS 多进程" itemprop="url">python多线程 VS 多进程</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="michaelcheng" target="_blank" itemprop="author">michaelcheng</a>
+		
+  <p class="article-time">
+    <time datetime="2018-09-23T06:12:20.256Z" itemprop="datePublished"> Published 2018-09-23</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h1 id="python多线程-VS-多进程"><a href="#python多线程-VS-多进程" class="headerlink" title="python多线程 VS 多进程"></a>python多线程 VS 多进程</h1><h2 id="1-基本概念"><a href="#1-基本概念" class="headerlink" title="1.基本概念"></a>1.基本概念</h2><h3 id="1-1-线程是什么鬼"><a href="#1-1-线程是什么鬼" class="headerlink" title="1.1 线程是什么鬼?"></a>1.1 线程是什么鬼?</h3><p><strong><em>线程（有时被称为轻量级进程）跟进程有些相似，不同的是，所有的线程运行在同一个进程中，共享相同的运行环境。</em></strong>它们可以想像成是在主进程或“主线程”中并行运行的“迷你进程”。<strong><em>线程有开始，顺序执行和结束三部分。它有一个自己的指令指针，记录自己运行到什么地方。线程的运行可能被抢占（中断），或暂时的被挂起（也叫睡眠），让其它的线程运行，这叫做让步。一个进程中的各个线程之间共享同一片数据空间，所以线程之间可以比进程之间更方便地共享数据以及相互通讯。线程一般都是并发执行的，正是由于这种并行和数据共享的机制使得多个任务的合作变为可能。</em></strong>实际上，在单CPU的系统中，真正的并发是不可能的，每个线程会被安排成每次只运行一小会，然后就把CPU让出来，让其它的线程去运行。在进程的整个运行过程中，每个线程都只做自己的事，在需要的时候跟其它的线程共享运行的结果。</p>
+<h3 id="1-2-进程又是什么鬼？"><a href="#1-2-进程又是什么鬼？" class="headerlink" title="1.2 进程又是什么鬼？"></a>1.2 进程又是什么鬼？</h3><p>计算机程序只不过是磁盘中可执行的，二进制（或其它类型）的数据。它们只有在被读取到内存中，被操作系统调用的时候才开始它们的生命期。<strong><em>进程（有时被称为重量级进程）是程序的一次执行。每个进程都有自己的地址空间，内存，数据栈以及其它记录其运行轨迹的辅助数据。</em></strong>操作系统管理在其上运行的所有进程，并为这些进程公平地分配时间。<strong>进程也可以通过 fork 和 spawn 操作来完成其它的任务。不过各个进程有自己的内存空间，数据栈等，所以只能使用进程间通讯（IPC），而不能直接共享信息。</strong></p>
+<h2 id="2-Python、线程和全局解释器锁"><a href="#2-Python、线程和全局解释器锁" class="headerlink" title="2.Python、线程和全局解释器锁"></a>2.Python、线程和全局解释器锁</h2><p>Python 代码的执行由 Python 虚拟机(也叫解释器主循环)来控制。Python 在设计之初就考虑到要在主循环中，同时只有一个线程在执行，就像单 CPU 的系统中运行多个进程那样，内存中可以存放多个程序，但任意时刻，只有一个程序在 CPU 中运行。同样地，<strong><em>虽然 Python 解释器中可以“运行”多个线程，但在任意时刻，只有一个线程在解释器中运行。</em></strong>对 Python 虚拟机的访问由全局解释器锁（GIL）来控制，正是这个锁能保证同一时刻只有一个线程在运行。在多线程环境中，Python 虚拟机按以下方式执行：</p>
+<ol>
+<li>设置 GIL</li>
+<li>切换到一个线程去运行</li>
+<li>运行：<br>  <em>指定数量的字节码指令，或者</em><br>  <em>线程主动让出控制（可以调用 time.sleep(0)）</em></li>
+<li>把线程设置为睡眠状态</li>
+<li>解锁 GIL</li>
+<li>再次重复以上所有步骤</li>
+</ol>
+<h2 id="3-实例"><a href="#3-实例" class="headerlink" title="3.实例"></a>3.实例</h2><h3 id="3-1-多线程实例"><a href="#3-1-多线程实例" class="headerlink" title="3.1 多线程实例"></a>3.1 多线程实例</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/local/bin/python2.7</span><br><span class="line"># encoding: utf-8</span><br><span class="line">from time import ctime, sleep</span><br><span class="line">import threading</span><br><span class="line"></span><br><span class="line">class MyThread(threading.Thread):</span><br><span class="line">    </span><br><span class="line">    def __init__(self, func, args, name=&apos;&apos;): </span><br><span class="line">        threading.Thread.__init__(self)</span><br><span class="line">        self.name = name</span><br><span class="line">        self.func = func</span><br><span class="line">        self.args = args</span><br><span class="line">    </span><br><span class="line">    def run(self):</span><br><span class="line">        print &apos;starting&apos;, self.name, &apos;at:&apos;, ctime()</span><br><span class="line">        self.res = apply(self.func, self.args)</span><br><span class="line">        print self.name, &apos;finished at:&apos;, ctime()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def fib(x):</span><br><span class="line">    sleep(0.005)</span><br><span class="line">    if x&lt;2:return 1</span><br><span class="line">    return (fib(x-2) + fib(x-1))</span><br><span class="line"></span><br><span class="line">def fac(x):</span><br><span class="line">    sleep(0.1)</span><br><span class="line">    if x&lt;2:return 1</span><br><span class="line">    return (x*fac(x-1))</span><br><span class="line"></span><br><span class="line">def sum_1(x):</span><br><span class="line">    sleep(0.1)</span><br><span class="line">    if x&lt;2:return 1</span><br><span class="line">    return (x+ sum_1(x-1))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">funcs = [fib, fac, sum_1]</span><br><span class="line"></span><br><span class="line">n = 12</span><br><span class="line"></span><br><span class="line">def main():</span><br><span class="line">    nfuncs = range(len(funcs))</span><br><span class="line">    </span><br><span class="line">    print &apos;*** SINGLE THREAD&apos;</span><br><span class="line">    </span><br><span class="line">    for i in nfuncs:</span><br><span class="line">        print &apos;starting&apos;, funcs[i].__name__, &apos;at:&apos;, ctime()</span><br><span class="line">        print &apos;result:&apos;, funcs[i](n)</span><br><span class="line">        print funcs[i].__name__, &apos;finished at:&apos;, ctime()</span><br><span class="line">        </span><br><span class="line">    print &apos;\n*** MULTIPLE THREADS&apos;</span><br><span class="line"></span><br><span class="line">    threads = []</span><br><span class="line">    for i in nfuncs:</span><br><span class="line">        t = MyThread(funcs[i], (n,), funcs[i].__name__)</span><br><span class="line">        threads.append(t)</span><br><span class="line">        </span><br><span class="line">    for i in nfuncs:</span><br><span class="line">        threads[i].start()</span><br><span class="line">        </span><br><span class="line">    for i in nfuncs:</span><br><span class="line">        threads[i].join()</span><br><span class="line">        print threads[i]</span><br><span class="line">               </span><br><span class="line">    print &apos;all Done&apos;</span><br><span class="line">        </span><br><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+<h3 id="3-2-多进程实例"><a href="#3-2-多进程实例" class="headerlink" title="3.2 多进程实例"></a>3.2 多进程实例</h3><p>这里使用了进程池<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">from multiprocessing import Pool</span><br><span class="line">import os, time, random</span><br><span class="line"></span><br><span class="line">def long_time_task(name):</span><br><span class="line">    print &apos;Run task %s (%s)...&apos; % (name, os.getpid())</span><br><span class="line">    start = time.time()</span><br><span class="line">    time.sleep(random.random() * 3)</span><br><span class="line">    end = time.time()</span><br><span class="line">    print &apos;Task %s runs %0.2f seconds.&apos; % (name, (end - start))</span><br><span class="line"></span><br><span class="line">if __name__==&apos;__main__&apos;:</span><br><span class="line">    print &apos;Parent process %s.&apos; % os.getpid()</span><br><span class="line">    p = Pool()</span><br><span class="line">    for i in range(5):</span><br><span class="line">        p.apply_async(long_time_task, args=(i,))</span><br><span class="line">    print &apos;Waiting for all subprocesses done...&apos;</span><br><span class="line">    p.close()</span><br><span class="line">    p.join()</span><br><span class="line">    print &apos;All subprocesses done.&apos;</span><br></pre></td></tr></table></figure></p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/python/">python</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/python-多线程-多线程/">python,多线程,多线程</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2018/09/23/python线程池/" title="python线程池" itemprop="url">python线程池</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="michaelcheng" target="_blank" itemprop="author">michaelcheng</a>
+		
+  <p class="article-time">
+    <time datetime="2018-09-23T06:12:20.256Z" itemprop="datePublished"> Published 2018-09-23</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h1 id="python线程池"><a href="#python线程池" class="headerlink" title="python线程池"></a>python线程池</h1><h2 id="1-为什么需要线程池"><a href="#1-为什么需要线程池" class="headerlink" title="1.为什么需要线程池"></a>1.为什么需要线程池</h2><p>　目前的大多数网络服务器，包括Web服务器、Email服务器以及数据库服务器等都具有一个共同点，就是单位时间内必须处理数目巨大的连接请求，但处理时间却相对较短。<br>　　传统多线程方案中我们采用的服务器模型则是一旦接受到请求之后，即创建一个新的线程，由该线程执行任务。任务执行完毕后，线程退出，这就是是“即时创建， 即时销毁”的策略。尽管与创建进程相比，创建线程的时间已经大大的缩短，但是如果提交给线程的任务是执行时间较短，而且执行次数极其频繁，那么服务器将处于不停的创建线程，销毁线程的状态。<br>　　我们将传统方案中的线程执行过程分为三个过程：T1、T2、T3：<br>　　T1：线程创建时间<br>　　T2：线程执行时间，包括线程的同步等时间<br>　　T3：线程销毁时间</p>
+<p>　　那么我们可以看出，线程本身的开销所占的比例为(T1+T3) / (T1+T2+T3)。如果线程执行的时间很短的话，这比开销可能占到20%-50%左右。如果任务执行时间很频繁的话，这笔开销将是不可忽略的。<br>　　除此之外，线程池能够减少创建的线程个数。通常线程池所允许的并发线程是有上界的，如果同时需要并发的线程数超过上界，那么一部分线程将会等待。而传统方案中，如果同时请求数目为2000，那么最坏情况下，系统可能需要产生2000个线程。尽管这不是一个很大的数目，但是也有部分机器可能达不到这种要求。<br>　　<strong>因此线程池的出现正是着眼于减少线程池本身带来的开销。</strong>线程池采用预创建的技术，在应用程序启动之后，将立即创建一定数量的线程(N1)，放入空闲队列 中。这些线程都是处于阻塞（Suspended）状态，不消耗CPU，但占用较小的内存空间。当任务到来后，缓冲池选择一个空闲线程，把任务传入此线程中运行。当N1个线程都在处理任务后，缓冲池自动创建一定数量的新线程，用于处理更多的任务。在任务执行完毕后线程也不退出，而是继续保持在池中等待下一次的任务。当系统比较空闲时，大部分线程都一直处于暂停状态，线程池自动销毁一部分线程，回收系统资源。<br>　　基于这种预创建技术，线程池将线程创建和销毁本身所带来的开销分摊到了各个具体的任务上，执行次数越多，每个任务所分担到的线程本身开销则越小，不过我们另外可能需要考虑进去线程之间同步所带来的开销。</p>
+<h2 id="2-构建线程池框架"><a href="#2-构建线程池框架" class="headerlink" title="2.构建线程池框架"></a>2.构建线程池框架</h2><p>一般线程池都必须具备下面几个组成部分：</p>
+<ul>
+<li>线程池管理器:用于创建并管理线程池</li>
+<li>工作线程: 线程池中实际执行的线程</li>
+<li>任务接口: 尽管线程池大多数情况下是用来支持网络服务器，但是我们将线程执行的任务抽象出来，形成任务接口，从而是的线程池与具体的任务无关。</li>
+<li>任务队列:线程池的概念具体到实现则可能是队列，链表之类的数据结构，其中保存执行线程。<br>　　<strong>我们把任务放进队列中去，然后开N个线程，每个线程都去队列中取一个任务，执行完了之后告诉系统说我执行完了，然后接着去队列中取下一个任务，直至队列中所有任务取空，退出线程。</strong>
+　　<h2 id="3-线程池的python实现"><a href="#3-线程池的python实现" class="headerlink" title="3.线程池的python实现"></a>3.线程池的python实现</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line"># !/usr/bin/env python</span><br><span class="line"># -*- coding:utf-8 -*-</span><br><span class="line"># ref_blog:http://www.open-open.com/home/space-5679-do-blog-id-3247.html</span><br><span class="line"></span><br><span class="line">import Queue</span><br><span class="line">import threading</span><br><span class="line">import time</span><br><span class="line"></span><br><span class="line">class WorkManager(object):</span><br><span class="line">    def __init__(self, work_num=1000,thread_num=2):</span><br><span class="line">        self.work_queue = Queue.Queue()</span><br><span class="line">        self.threads = []</span><br><span class="line">        self.__init_work_queue(work_num)</span><br><span class="line">        self.__init_thread_pool(thread_num)</span><br><span class="line"></span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">        初始化线程</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    def __init_thread_pool(self,thread_num):</span><br><span class="line">        for i in range(thread_num):</span><br><span class="line">            self.threads.append(Work(self.work_queue))</span><br><span class="line"></span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">        初始化工作队列</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    def __init_work_queue(self, jobs_num):</span><br><span class="line">        for i in range(jobs_num):</span><br><span class="line">            self.add_job(do_job, i)</span><br><span class="line"></span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">        添加一项工作入队</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    def add_job(self, func, *args):</span><br><span class="line">        self.work_queue.put((func, list(args)))#任务入队，Queue内部实现了同步机制</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">        检查剩余队列任务</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    def check_queue(self):</span><br><span class="line">        return self.work_queue.qsize()</span><br><span class="line"></span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">        等待所有线程运行完毕</span><br><span class="line">    &quot;&quot;&quot;   </span><br><span class="line">    def wait_allcomplete(self):</span><br><span class="line">        for item in self.threads:</span><br><span class="line">            if item.isAlive():item.join()</span><br><span class="line"></span><br><span class="line">class Work(threading.Thread):</span><br><span class="line">    def __init__(self, work_queue):</span><br><span class="line">        threading.Thread.__init__(self)</span><br><span class="line">        self.work_queue = work_queue</span><br><span class="line">        self.start()</span><br><span class="line"></span><br><span class="line">    def run(self):</span><br><span class="line">        #死循环，从而让创建的线程在一定条件下关闭退出</span><br><span class="line">        while True:</span><br><span class="line">            try:</span><br><span class="line">                do, args = self.work_queue.get(block=False)#任务异步出队，Queue内部实现了同步机制</span><br><span class="line">                do(args)</span><br><span class="line">                self.work_queue.task_done()#通知系统任务完成</span><br><span class="line">            except Exception,e:</span><br><span class="line">                print str(e)</span><br><span class="line">                break</span><br><span class="line"></span><br><span class="line">#具体要做的任务</span><br><span class="line">def do_job(args):</span><br><span class="line">    print args</span><br><span class="line">    time.sleep(0.1)#模拟处理时间</span><br><span class="line">    print threading.current_thread(), list(args)</span><br><span class="line"></span><br><span class="line">if __name__ == &apos;__main__&apos;:</span><br><span class="line">    start = time.time()</span><br><span class="line">    work_manager =  WorkManager(10, 2)#或者work_manager =  WorkManager(10000, 20)</span><br><span class="line">    work_manager.wait_allcomplete()</span><br><span class="line">    end = time.time()</span><br><span class="line">    print &quot;cost all time: %s&quot; % (end-start)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>Work类是一个Python线程池，不断地从workQueue队列中获取需要执行的任务，执行之，并将结果写入到resultQueue中。这里的workQueue和resultQueue都是线程安全的，其内部对各个线程的操作做了互斥。当从workQueue中获取任务超时，则线程结束。<br>　　WorkerManager负责初始化Python线程池，提供将任务加入队列和获取结果的接口，并能等待所有任务完成。<br>　　在 Python 中使用线程时，这个模式是一种很常见的并且推荐使用的方式。具体工作步骤描述如下：</p>
+<pre><code>1.创建一个 Queue.Queue() 的实例，然后使用数据对它进行填充。
+2.将经过填充数据的实例传递给线程类，后者是通过继承 threading.Thread 的方式创建的。
+3.生成守护线程池。
+4.每次从队列中取出一个项目，并使用该线程中的数据和 run 方法以执行相应的工作。
+5.在完成这项工作之后，使用 queue.task_done() 函数向任务已经完成的队列发送一个信号。
+6.对队列执行 join 操作，实际上意味着等到队列为空，再退出主程序。
+</code></pre><p>　　在使用这个模式时需要注意一点：通过将守护线程设置为 true，将允许主线程或者程序仅在守护线程处于活动状态时才能够退出。这种方式创建了一种简单的方式以控制程序流程，因为在退出之前，您可以对队列执行 join 操作、或者等到队列为空。</p>
+<pre><code>join()保持阻塞状态，直到处理了队列中的所有项目为止。在将一个项目添加到该队列时，未完成的任务的总数就会增加。当使用者线程调用 task_done() 以表示检索了该项目、并完成了所有的工作时，那么未完成的任务的总数就会减少。当未完成的任务的总数减少到零时，join() 就会结束阻塞状态。
+</code></pre>
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/python/">python</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/python-线程池/">python,线程池</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2018/09/23/blogs使用说明/" title="blogs使用说明" itemprop="url">blogs使用说明</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="michaelcheng" target="_blank" itemprop="author">michaelcheng</a>
+		
+  <p class="article-time">
+    <time datetime="2018-09-23T06:12:20.252Z" itemprop="datePublished"> Published 2018-09-23</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h1 id="blogs使用说明"><a href="#blogs使用说明" class="headerlink" title="blogs使用说明"></a>blogs使用说明</h1><h2 id="1-cd-blogs"><a href="#1-cd-blogs" class="headerlink" title="1.cd blogs"></a>1.cd blogs</h2><h2 id="2-git-checkout-blogs"><a href="#2-git-checkout-blogs" class="headerlink" title="2.git checkout blogs"></a>2.git checkout blogs</h2><h2 id="3-在blogs-source-post-下创建一个-md文档，在文档里写内容。"><a href="#3-在blogs-source-post-下创建一个-md文档，在文档里写内容。" class="headerlink" title="3.在blogs/source/_post/下创建一个.md文档，在文档里写内容。"></a>3.在blogs/source/_post/下创建一个.md文档，在文档里写内容。</h2><h2 id="4-hexo-clean"><a href="#4-hexo-clean" class="headerlink" title="4.hexo clean"></a>4.hexo clean</h2><h2 id="5-hexo-g"><a href="#5-hexo-g" class="headerlink" title="5.hexo g"></a>5.hexo g</h2><h2 id="6-hexo-s"><a href="#6-hexo-s" class="headerlink" title="6.hexo s"></a>6.hexo s</h2><h2 id="7-hexo-d"><a href="#7-hexo-d" class="headerlink" title="7.hexo d"></a>7.hexo d</h2><p>update 备份</p>
+<h2 id="8-git-pull-https-github-com-michaelcjl-blogs-这步骤非必须"><a href="#8-git-pull-https-github-com-michaelcjl-blogs-这步骤非必须" class="headerlink" title="8.git pull https://github.com/michaelcjl/blogs(这步骤非必须)"></a>8.git pull <a href="https://github.com/michaelcjl/blogs(这步骤非必须)" target="_blank" rel="noopener">https://github.com/michaelcjl/blogs(这步骤非必须)</a></h2><h2 id="9-git-push-origin-blogs"><a href="#9-git-push-origin-blogs" class="headerlink" title="9.git push origin blogs"></a>9.git push origin blogs</h2>
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/blogs/">blogs</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/blogs/">blogs</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2018/09/23/hexo-写博客-发布-备份/" title="hexo 写博客-发布-备份" itemprop="url">hexo 写博客-发布-备份</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="michaelcheng" target="_blank" itemprop="author">michaelcheng</a>
+		
+  <p class="article-time">
+    <time datetime="2018-09-23T06:12:20.252Z" itemprop="datePublished"> Published 2018-09-23</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h1 id="hexo-写博客-发布-备份"><a href="#hexo-写博客-发布-备份" class="headerlink" title="hexo 写博客-发布-备份"></a>hexo 写博客-发布-备份</h1><h2 id="1-写博客"><a href="#1-写博客" class="headerlink" title="1.写博客"></a>1.写博客</h2><p>在你的博客根目录下执行：</p>
+<pre><code>hexo new &quot;Hello Hexo&quot; 或 hexo n &quot;Hello Hexo&quot; 生成一个markdown文件骨架用于填写内容
+</code></pre><p>在博客的_posts文件夹下（blogs/source/_posts）会生成Hello Hexo.md的文件，打开该文件并写入你的文档。markdown文件头部, 支持多标签</p>
+<h2 id="2-发布博客"><a href="#2-发布博客" class="headerlink" title="2.发布博客"></a>2.发布博客</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo generate 或 hexo g 写完博客后, 生成静态内容</span><br><span class="line">hexo server 或 hexo s 启动本地服务器可以先看一下效果</span><br><span class="line">hexo deploy 或 hexo d 发布到外网</span><br></pre></td></tr></table></figure>
+<h2 id="3-备份博客"><a href="#3-备份博客" class="headerlink" title="3.备份博客"></a>3.备份博客</h2><p>网络上面大部分的方法都是使用网盘进行备份，这种方法实在是太不“程序员”了！我使用git分支来备份博客。使用GithubPage生成的博客都是存放在github的仓库（XXXX.github.io）的master分支中，我在这个仓库中新建一个分支blogs来保存博客的源文件。这样就可以用一个仓库来存放Git Page，以及备份博客。</p>
+<blockquote>
+<ul>
+<li>在博客的根目录下执行git init,生成一个git仓库，因为根目录下已经存在一个.gitignore文件，所以不需要自己去管理ignore文件。</li>
+<li>在博客根目录下执行git checkout -b blogs,生成一个新的分支blogs。并执行git add .,git commit将源文件用git管理。</li>
+<li>添加远程仓库：git remote add origin <a href="mailto:git@xxxx.git" target="_blank" rel="noopener">git@xxxx.git</a>。</li>
+<li>将本地blogs分支推送至远程blogs分支。git push origin blogs。</li>
+</ul>
+</blockquote>
+<p>以上部分执行结束之后，本地的博客源文件就存放在blogs分支中，以后对于博客的修改，hexo命令都在hexo分支中执行即可，记得更新博客之后要push。。。</p>
+<p>update 备份<br>git pull <a href="https://github.com/michaelcjl/blogs" target="_blank" rel="noopener">https://github.com/michaelcjl/blogs</a><br>git push origin blogs</p>
+<p>那么在另一台电脑上面怎样更新博客呢？<br>克隆仓库。git clone <a href="mailto:git@xxxx.git" target="_blank" rel="noopener">git@xxxx.git</a>。</p>
+<p>仓库克隆下来之后，本地只有一个master分支，内容是hexo生成的静态博客文件。因为博客源文件保存在远程hexo分支中，所以我们需要在本地新建一个hexo分支来跟踪远程hexo分支：<br><code>git checkout -b hexo origin/hexo</code><br> 切换至hexo分支之后，依次执行一下指令:<br> <code>npm install hexo,npm install,npm install hexo-deployer-git</code><br>之后就可以随心所遇的在另外一台电脑上更新博客了=。=<br>以上步骤结束之后，执行hexo g -d可能会报“TypeError: Cannot set property ‘lastIndex’ of undefined”，这时只需要执行hexo clean即可。</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/博客/">博客</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/博客-备份/">博客,备份</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2018/09/23/pyhon2.x编码问题/" title="pyhon2.x 编码问题" itemprop="url">pyhon2.x 编码问题</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="michaelcheng" target="_blank" itemprop="author">michaelcheng</a>
+		
+  <p class="article-time">
+    <time datetime="2018-09-23T06:09:49.954Z" itemprop="datePublished"> Published 2018-09-23</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h1 id="pyhon2-x-编码问题"><a href="#pyhon2-x-编码问题" class="headerlink" title="pyhon2.x 编码问题"></a>pyhon2.x 编码问题</h1><p>版本py2.x<br>其实开始也没太注意python2的编码问题，直到写代码调试的时候出现了如下报错：</p>
+<blockquote>
+<p>Traceback (most recent call last):<br>File “<stdin>“, line 1, in <module><br>UnicodeDecodeError: ‘ascii’ codec can’t decode byte 0xe6 in position 0: ordinal not in range(128)</module></stdin></p>
+</blockquote>
+<p>网上很快就找到了解决方法。但还是想把这个问题整明白。于是网上搜了下，研究一番，整理一下。</p>
+<h2 id="1-什么是字符编码？"><a href="#1-什么是字符编码？" class="headerlink" title="1.什么是字符编码？"></a><a href="https://zh.wikipedia.org/wiki/%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81" target="_blank" rel="noopener">1.什么是字符编码？</a></h2><p>字符编码（英语：Character encoding）、字集码是把字符集中的字符编码为指定集合中某一对象（例如：比特模式、自然数序列、8位组或者电脉冲），以便文本在计算机中存储和通过通信网络的传递。常见的例子包括将拉丁字母表编码成摩斯电码和ASCII。其中，ASCII将字母、数字和其它符号编号，并用7比特的二进制来表示这个整数。通常会额外使用一个扩充的比特，以便于以1个字节的方式存储。</p>
+<p><a href="http://www.ruanyifeng.com/blog/2007/10/ascii_unicode_and_utf-8.html" target="_blank" rel="noopener">字符编码笔记：ASCII，Unicode和UTF-8</a> </p>
+<h2 id="2-str-和-unicode"><a href="#2-str-和-unicode" class="headerlink" title="2.str 和 unicode"></a>2.str 和 unicode</h2><p> str和unicode都是basestring的子类,所以有判断是否是字符串的方法</p>
+<pre><code>def is_str(s):
+return isinstance(s, basestring)
+</code></pre><p> str和unicode 转换</p>
+<pre><code>str  -&gt; decode(&apos;the_coding_of_str&apos;) -&gt; unicode
+unicode -&gt; encode(&apos;the_coding_you_want&apos;) -&gt; str
+</code></pre><p>str是字节串，由unicode经过编码(encode)后的字节组成的<br><strong><em>examlpe for str :</em></strong><br>声明方式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">s = &apos;中文&apos;</span><br><span class="line">s = u&apos;中文&apos;.encode(&apos;utf-8&apos;)</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; type(&apos;中文&apos;)</span><br><span class="line">&lt;type &apos;str&apos;&gt;</span><br></pre></td></tr></table></figure></p>
+<p>求长度(返回字节数)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; u&apos;中文&apos;.encode(&apos;utf-8&apos;)</span><br><span class="line">&apos;\xe4\xb8\xad\xe6\x96\x87&apos;</span><br><span class="line">&gt;&gt;&gt; len(u&apos;中文&apos;.encode(&apos;utf-8&apos;))</span><br><span class="line">6</span><br></pre></td></tr></table></figure></p>
+<p>所以，unicode才是真正意义上的字符串，由字符组成</p>
+<hr>
+<p><strong><em>examlpe for unicode :</em></strong><br>声明方式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line">s = u&apos;中文&apos;</span><br><span class="line">s = &apos;中文&apos;.decode(&apos;utf-8&apos;)</span><br><span class="line">s = unicode(&apos;中文&apos;, &apos;utf-8&apos;)</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; type(u&apos;中文&apos;)</span><br><span class="line">&lt;type &apos;unicode&apos;&gt;</span><br><span class="line">```  </span><br><span class="line">求长度(返回字符数),在逻辑中真正想要用的</span><br><span class="line">``` </span><br><span class="line">&gt;&gt;&gt; u&apos;中文&apos;</span><br><span class="line">u&apos;\u4e2d\u6587&apos;</span><br><span class="line">&gt;&gt;&gt; len(u&apos;中文&apos;)</span><br><span class="line">2</span><br><span class="line">``` </span><br><span class="line">**搞明白要处理的是str还是unicode,使用对的处理方法(str.decode/unicode.encode)**</span><br><span class="line"></span><br><span class="line">下面是判断是否为unicode/str的方法</span><br><span class="line">``` </span><br><span class="line">&gt;&gt;&gt; isinstance(u&apos;中文&apos;, unicode)</span><br><span class="line">True</span><br><span class="line">&gt;&gt;&gt; isinstance(&apos;中文&apos;, unicode)</span><br><span class="line">False</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; isinstance(&apos;中文&apos;, str)</span><br><span class="line">True</span><br><span class="line">&gt;&gt;&gt; isinstance(u&apos;中文&apos;, str)</span><br><span class="line">False</span><br><span class="line">``` </span><br><span class="line">**简单原则：不要对str使用encode，不要对unicode使用decode** </span><br><span class="line">**不同编码转换,使用unicode作为中间编码**</span><br><span class="line">``` </span><br><span class="line">#s是code_A的str</span><br><span class="line">s.decode(&apos;code_A&apos;).encode(&apos;code_B&apos;)</span><br><span class="line">``` </span><br><span class="line">##  3.文件处理,IDE和控制台</span><br><span class="line"></span><br><span class="line"> -  处理流程，可以这么使用，把python看做一个水池，一个入口，一个出口</span><br><span class="line"></span><br><span class="line">入口处，全部转成unicode,池里全部使用unicode处理，出口处，再转成目标编码(当然，有例外，处理逻辑中要用到具体编码的情况)</span><br><span class="line"></span><br><span class="line">&gt;  读文件</span><br><span class="line"></span><br><span class="line">&gt;  外部输入编码，decode转成unicode</span><br><span class="line"></span><br><span class="line">&gt;  处理(内部编码，统一unicode)</span><br><span class="line"></span><br><span class="line">&gt;  encode转成需要的目标编码</span><br><span class="line"></span><br><span class="line">&gt;  写到目标输出(文件或控制台)</span><br><span class="line"></span><br><span class="line">IDE和控制台报错，原因是print时，编码和IDE自身编码不一致导致</span><br><span class="line">输出时将编码转换成一致的就可以正常输出</span><br><span class="line">``` </span><br><span class="line">&gt;&gt;&gt; print u&apos;中文&apos;.encode(&apos;gbk&apos;)</span><br><span class="line">����</span><br><span class="line">&gt;&gt;&gt; print u&apos;中文&apos;.encode(&apos;utf-8&apos;)</span><br><span class="line">中文</span><br><span class="line">``` </span><br><span class="line">suggestion:</span><br><span class="line"></span><br><span class="line"> -  规范编码</span><br><span class="line">&gt;  统一编码，防止由于某个环节产生的乱码</span><br><span class="line">    环境编码，IDE/文本编辑器, 文件编码，数据库数据表编码</span><br><span class="line"></span><br><span class="line"> -  源文件编码</span><br><span class="line">&gt;  这个很重要。py文件默认编码是ASCII,在源代码文件中，如果用到非ASCII字符，需要在文件头部进行编码声明 文档不声明的话，输入非ASCII会遇到的错误,必须放在文件第一行或第二行 </span><br><span class="line"></span><br><span class="line">声明方法</span><br></pre></td></tr></table></figure></p>
+<h1 id="coding-utf-8"><a href="#coding-utf-8" class="headerlink" title="-- coding: utf-8 --"></a>-<em>- coding: utf-8 -</em>-</h1><p>或者</p>
+<p>#coding=utf-8<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">若头部声明coding=utf-8, a = &apos;中文&apos; 其编码为utf-8</span><br><span class="line"></span><br><span class="line">若头部声明coding=gb2312, a = &apos;中文&apos; 其编码为gbk</span><br><span class="line"></span><br><span class="line">so, 同一项目中所有源文件头部统一一个编码,并且声明的编码要和源文件保存的编码一致(编辑器相关)</span><br><span class="line"></span><br><span class="line"> - 在源代码用作处理的硬编码字符串，统一用unicode</span><br><span class="line">  &gt;  将其类型和源文件本身的编码隔离开, 独立无依赖方便流程中各个位置处理</span><br></pre></td></tr></table></figure></p>
+<pre><code>if s == u&apos;中文&apos;:  #而不是 s == &apos;中文&apos;
+    pass
+#注意这里 s到这里时，确保转为unicode
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">以上几步搞定后，你只需要关注两个 unicode和 你设定的编码(一般使用utf-8)</span><br><span class="line"></span><br><span class="line"> -  处理顺序</span><br><span class="line">       Decode early</span><br><span class="line">       Unicode everywhere</span><br><span class="line">       Encode later</span><br><span class="line"></span><br><span class="line">##  4.相关模块及一些方法</span><br><span class="line"> &gt;  获得和设置系统默认编码</span><br></pre></td></tr></table></figure>
+</code></pre><blockquote>
+<blockquote>
+<blockquote>
+<p>import sys<br>sys.getdefaultencoding()<br>‘ascii’</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>reload(sys)</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p><module 'sys'="" (built-in)=""></module></p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>sys.setdefaultencoding(‘utf-8’)<br>sys.getdefaultencoding()<br>‘utf-8’<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">&gt;  str.encode(&apos;other_coding&apos;)</span><br><span class="line"></span><br><span class="line">在python中，直接将某种编码的str进行encode成另一种编码str</span><br><span class="line">``` </span><br><span class="line">#str_A为utf-8</span><br><span class="line">str_A.encode(&apos;gbk&apos;)</span><br><span class="line"></span><br><span class="line">执行的操作是</span><br><span class="line">str_A.decode(&apos;sys_codec&apos;).encode(&apos;gbk&apos;)</span><br><span class="line">这里sys_codec即为上一步 sys.getdefaultencoding() 的编码</span><br><span class="line">``` </span><br><span class="line">&apos;获得和设置系统默认编码&apos;和这里的str.encode是相关的，但我一般很少这么用，主要是觉得复杂不可控,还是输入明确decode，输出明确encode来得简单些(个人观点)</span><br><span class="line"></span><br><span class="line">&gt;   chardet</span><br><span class="line"></span><br><span class="line">文件编码检测</span><br><span class="line">``` </span><br><span class="line">&gt;&gt;&gt; import chardet</span><br><span class="line">&gt;&gt;&gt; f = open(&apos;test.txt&apos;,&apos;r&apos;)</span><br><span class="line">&gt;&gt;&gt; result = chardet.detect(f.read())</span><br><span class="line">&gt;&gt;&gt; result</span><br><span class="line">&#123;&apos;confidence&apos;: 0.99, &apos;encoding&apos;: &apos;utf-8&apos;&#125;</span><br><span class="line">``` </span><br><span class="line">&gt;   \u字符串转对应unicode字符串</span><br><span class="line">``` </span><br><span class="line">&gt;&gt;&gt; u&apos;中&apos;</span><br><span class="line">u&apos;\u4e2d&apos;</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; s = &apos;\u4e2d&apos;</span><br><span class="line">&gt;&gt;&gt; print s.decode(&apos;unicode_escape&apos;)</span><br><span class="line">中</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; a = &apos;\\u4fee\\u6539\\u8282\\u70b9\\u72b6\\u6001\\u6210\\u529f&apos;</span><br><span class="line">&gt;&gt;&gt; a.decode(&apos;unicode_escape&apos;)</span><br><span class="line">u&apos;\u4fee\u6539\u8282\u70b9\u72b6\u6001\u6210\u529f&apos;</span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">----------</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">**最后来一个栗子，python 获取中文网页乱码转换**</span><br><span class="line">首先需要重置页面编码：</span><br><span class="line">``` </span><br><span class="line">import sys</span><br><span class="line">reload(sys)</span><br><span class="line">sys.setdefaultencoding(&apos;utf-8&apos;)</span><br><span class="line">``` </span><br><span class="line">爬虫原代码是：</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>res = requests.get(url, timeout=60).text<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">获取到的页面源码是乱码，各种转码都不行。</span><br><span class="line">换成：</span><br><span class="line">``` </span><br><span class="line">res = requests.get(url, timeout=60).content</span><br><span class="line">``` </span><br><span class="line">把text换成content以后，做res.decode(&apos;gbk&apos;).encode(&apos;utf-8&apos;)，终于正常。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">我们理解您需要更便捷更高效的工具记录思想，整理笔记、知识，并将其中承载的价值传播给他人，**Cmd Markdown** 是我们给出的答案 —— 我们为记录思想和分享知识提供更专业的工具。 您可以使用 Cmd Markdown：</span><br><span class="line"></span><br><span class="line">&gt; * 整理知识，学习笔记</span><br><span class="line">&gt; * 发布日记，杂文，所见所想</span><br><span class="line">&gt; * 撰写发布技术文稿（代码支持）</span><br><span class="line">&gt; * 撰写发布学术论文（LaTeX 公式支持）</span><br><span class="line"></span><br><span class="line">![cmd-markdown-logo](https://www.zybuluo.com/static/img/logo.png)</span><br><span class="line"></span><br><span class="line">除了您现在看到的这个 Cmd Markdown 在线版本，您还可以前往以下网址下载：</span><br><span class="line"></span><br><span class="line">### [Windows/Mac/Linux 全平台客户端](https://www.zybuluo.com/cmd/)</span><br><span class="line"></span><br><span class="line">&gt; 请保留此份 Cmd Markdown 的欢迎稿兼使用说明，如需撰写新稿件，点击顶部工具栏右侧的 &lt;i class=&quot;icon-file&quot;&gt;&lt;/i&gt; **新文稿** 或者使用快捷键 `Ctrl+Alt+N`。</span><br><span class="line"></span><br><span class="line">------</span><br><span class="line"></span><br><span class="line">## 什么是 Markdown</span><br><span class="line"></span><br><span class="line">Markdown 是一种方便记忆、书写的纯文本标记语言，用户可以使用这些标记符号以最小的输入代价生成极富表现力的文档：譬如您正在阅读的这份文档。它使用简单的符号标记不同的标题，分割不同的段落，**粗体** 或者 *斜体* 某些文字，更棒的是，它还可以</span><br><span class="line"></span><br><span class="line">### 1. 制作一份待办事宜 [Todo 列表](https://www.zybuluo.com/mdeditor?url=https://www.zybuluo.com/static/editor/md-help.markdown#13-待办事宜-todo-列表)</span><br><span class="line"></span><br><span class="line">- [ ] 支持以 PDF 格式导出文稿</span><br><span class="line">- [ ] 改进 Cmd 渲染算法，使用局部渲染技术提高渲染效率</span><br><span class="line">- [x] 新增 Todo 列表功能</span><br><span class="line">- [x] 修复 LaTex 公式渲染问题</span><br><span class="line">- [x] 新增 LaTex 公式编号功能</span><br><span class="line"></span><br><span class="line">### 2. 书写一个质能守恒公式[^LaTeX]</span><br><span class="line"></span><br><span class="line">$$E=mc^2$$</span><br><span class="line"></span><br><span class="line">### 3. 高亮一段代码[^code]</span><br><span class="line"></span><br><span class="line">```python</span><br><span class="line">@requires_authorization</span><br><span class="line">class SomeClass:</span><br><span class="line">    pass</span><br><span class="line"></span><br><span class="line">if __name__ == &apos;__main__&apos;:</span><br><span class="line">    # A comment</span><br><span class="line">    print &apos;hello world&apos;</span><br></pre></td></tr></table></figure></p>
+<h3 id="4-高效绘制-流程图"><a href="#4-高效绘制-流程图" class="headerlink" title="4. 高效绘制 流程图"></a>4. 高效绘制 <a href="https://www.zybuluo.com/mdeditor?url=https://www.zybuluo.com/static/editor/md-help.markdown#7-流程图" target="_blank" rel="noopener">流程图</a></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">st=&gt;start: Start</span><br><span class="line">op=&gt;operation: Your Operation</span><br><span class="line">cond=&gt;condition: Yes or No?</span><br><span class="line">e=&gt;end</span><br><span class="line"></span><br><span class="line">st-&gt;op-&gt;cond</span><br><span class="line">cond(yes)-&gt;e</span><br><span class="line">cond(no)-&gt;op</span><br></pre></td></tr></table></figure>
+<h3 id="5-高效绘制-序列图"><a href="#5-高效绘制-序列图" class="headerlink" title="5. 高效绘制 序列图"></a>5. 高效绘制 <a href="https://www.zybuluo.com/mdeditor?url=https://www.zybuluo.com/static/editor/md-help.markdown#8-序列图" target="_blank" rel="noopener">序列图</a></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Alice-&gt;Bob: Hello Bob, how are you?</span><br><span class="line">Note right of Bob: Bob thinks</span><br><span class="line">Bob--&gt;Alice: I am good thanks!</span><br></pre></td></tr></table></figure>
+<h3 id="6-绘制表格"><a href="#6-绘制表格" class="headerlink" title="6. 绘制表格"></a>6. 绘制表格</h3><table>
+<thead>
+<tr>
+<th>项目</th>
+<th style="text-align:right">价格</th>
+<th style="text-align:center">数量</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>计算机</td>
+<td style="text-align:right">\$1600</td>
+<td style="text-align:center">5</td>
+</tr>
+<tr>
+<td>手机</td>
+<td style="text-align:right">\$12</td>
+<td style="text-align:center">12</td>
+</tr>
+<tr>
+<td>管线</td>
+<td style="text-align:right">\$1</td>
+<td style="text-align:center">234</td>
+</tr>
+</tbody>
+</table>
+<h3 id="7-更详细语法说明"><a href="#7-更详细语法说明" class="headerlink" title="7. 更详细语法说明"></a>7. 更详细语法说明</h3><p>想要查看更详细的语法说明，可以参考我们准备的 <a href="https://www.zybuluo.com/mdeditor?url=https://www.zybuluo.com/static/editor/md-help.markdown" target="_blank" rel="noopener">Cmd Markdown 简明语法手册</a>，进阶用户可以参考 <a href="https://www.zybuluo.com/mdeditor?url=https://www.zybuluo.com/static/editor/md-help.markdown#cmd-markdown-高阶语法手册" target="_blank" rel="noopener">Cmd Markdown 高阶语法手册</a> 了解更多高级功能。</p>
+<p>总而言之，不同于其它 <em>所见即所得</em> 的编辑器：你只需使用键盘专注于书写文本内容，就可以生成印刷级的排版格式，省却在键盘和工具栏之间来回切换，调整内容和格式的麻烦。<strong>Markdown 在流畅的书写和印刷级的阅读体验之间找到了平衡。</strong> 目前它已经成为世界上最大的技术分享网站 GitHub 和 技术问答网站 StackOverFlow 的御用书写格式。</p>
+<hr>
+<h2 id="什么是-Cmd-Markdown"><a href="#什么是-Cmd-Markdown" class="headerlink" title="什么是 Cmd Markdown"></a>什么是 Cmd Markdown</h2><p>您可以使用很多工具书写 Markdown，但是 Cmd Markdown 是这个星球上我们已知的、最好的 Markdown 工具——没有之一 ：）因为深信文字的力量，所以我们和你一样，对流畅书写，分享思想和知识，以及阅读体验有极致的追求，我们把对于这些诉求的回应整合在 Cmd Markdown，并且一次，两次，三次，乃至无数次地提升这个工具的体验，最终将它演化成一个 <strong>编辑/发布/阅读</strong> Markdown 的在线平台——您可以在任何地方，任何系统/设备上管理这里的文字。</p>
+<h3 id="1-实时同步预览"><a href="#1-实时同步预览" class="headerlink" title="1. 实时同步预览"></a>1. 实时同步预览</h3><p>我们将 Cmd Markdown 的主界面一分为二，左边为<strong>编辑区</strong>，右边为<strong>预览区</strong>，在编辑区的操作会实时地渲染到预览区方便查看最终的版面效果，并且如果你在其中一个区拖动滚动条，我们有一个巧妙的算法把另一个区的滚动条同步到等价的位置，超酷！</p>
+<h3 id="2-编辑工具栏"><a href="#2-编辑工具栏" class="headerlink" title="2. 编辑工具栏"></a>2. 编辑工具栏</h3><p>也许您还是一个 Markdown 语法的新手，在您完全熟悉它之前，我们在 <strong>编辑区</strong> 的顶部放置了一个如下图所示的工具栏，您可以使用鼠标在工具栏上调整格式，不过我们仍旧鼓励你使用键盘标记格式，提高书写的流畅度。</p>
+<p><img src="https://www.zybuluo.com/static/img/toolbar-editor.png" alt="tool-editor"></p>
+<h3 id="3-编辑模式"><a href="#3-编辑模式" class="headerlink" title="3. 编辑模式"></a>3. 编辑模式</h3><p>完全心无旁骛的方式编辑文字：点击 <strong>编辑工具栏</strong> 最右测的拉伸按钮或者按下 <code>Ctrl + M</code>，将 Cmd Markdown 切换到独立的编辑模式，这是一个极度简洁的写作环境，所有可能会引起分心的元素都已经被挪除，超清爽！</p>
+<h3 id="4-实时的云端文稿"><a href="#4-实时的云端文稿" class="headerlink" title="4. 实时的云端文稿"></a>4. 实时的云端文稿</h3><p>为了保障数据安全，Cmd Markdown 会将您每一次击键的内容保存至云端，同时在 <strong>编辑工具栏</strong> 的最右侧提示 <code>已保存</code> 的字样。无需担心浏览器崩溃，机器掉电或者地震，海啸——在编辑的过程中随时关闭浏览器或者机器，下一次回到 Cmd Markdown 的时候继续写作。</p>
+<h3 id="5-离线模式"><a href="#5-离线模式" class="headerlink" title="5. 离线模式"></a>5. 离线模式</h3><p>在网络环境不稳定的情况下记录文字一样很安全！在您写作的时候，如果电脑突然失去网络连接，Cmd Markdown 会智能切换至离线模式，将您后续键入的文字保存在本地，直到网络恢复再将他们传送至云端，即使在网络恢复前关闭浏览器或者电脑，一样没有问题，等到下次开启 Cmd Markdown 的时候，她会提醒您将离线保存的文字传送至云端。简而言之，我们尽最大的努力保障您文字的安全。</p>
+<h3 id="6-管理工具栏"><a href="#6-管理工具栏" class="headerlink" title="6. 管理工具栏"></a>6. 管理工具栏</h3><p>为了便于管理您的文稿，在 <strong>预览区</strong> 的顶部放置了如下所示的 <strong>管理工具栏</strong>：</p>
+<p><img src="https://www.zybuluo.com/static/img/toolbar-manager.jpg" alt="tool-manager"></p>
+<p>通过管理工具栏可以：</p>
+<p><i class="icon-share"></i> 发布：将当前的文稿生成固定链接，在网络上发布，分享<br><i class="icon-file"></i> 新建：开始撰写一篇新的文稿<br><i class="icon-trash"></i> 删除：删除当前的文稿<br><i class="icon-cloud"></i> 导出：将当前的文稿转化为 Markdown 文本或者 Html 格式，并导出到本地<br><i class="icon-reorder"></i> 列表：所有新增和过往的文稿都可以在这里查看、操作<br><i class="icon-pencil"></i> 模式：切换 普通/Vim/Emacs 编辑模式</p>
+<h3 id="7-阅读工具栏"><a href="#7-阅读工具栏" class="headerlink" title="7. 阅读工具栏"></a>7. 阅读工具栏</h3><p><img src="https://www.zybuluo.com/static/img/toolbar-reader.jpg" alt="tool-manager"></p>
+<p>通过 <strong>预览区</strong> 右上角的 <strong>阅读工具栏</strong>，可以查看当前文稿的目录并增强阅读体验。</p>
+<p>工具栏上的五个图标依次为：</p>
+<p><i class="icon-list"></i> 目录：快速导航当前文稿的目录结构以跳转到感兴趣的段落<br><i class="icon-chevron-sign-left"></i> 视图：互换左边编辑区和右边预览区的位置<br><i class="icon-adjust"></i> 主题：内置了黑白两种模式的主题，试试 <strong>黑色主题</strong>，超炫！<br><i class="icon-desktop"></i> 阅读：心无旁骛的阅读模式提供超一流的阅读体验<br><i class="icon-fullscreen"></i> 全屏：简洁，简洁，再简洁，一个完全沉浸式的写作和阅读环境</p>
+<h3 id="8-阅读模式"><a href="#8-阅读模式" class="headerlink" title="8. 阅读模式"></a>8. 阅读模式</h3><p>在 <strong>阅读工具栏</strong> 点击 <i class="icon-desktop"></i> 或者按下 <code>Ctrl+Alt+M</code> 随即进入独立的阅读模式界面，我们在版面渲染上的每一个细节：字体，字号，行间距，前背景色都倾注了大量的时间，努力提升阅读的体验和品质。</p>
+<h3 id="9-标签、分类和搜索"><a href="#9-标签、分类和搜索" class="headerlink" title="9. 标签、分类和搜索"></a>9. 标签、分类和搜索</h3><p>在编辑区任意行首位置输入以下格式的文字可以标签当前文档：</p>
+<p>标签： 未分类</p>
+<p>标签以后的文稿在【文件列表】（Ctrl+Alt+F）里会按照标签分类，用户可以同时使用键盘或者鼠标浏览查看，或者在【文件列表】的搜索文本框内搜索标题关键字过滤文稿，如下图所示：</p>
+<p><img src="https://www.zybuluo.com/static/img/file-list.png" alt="file-list"></p>
+<h3 id="10-文稿发布和分享"><a href="#10-文稿发布和分享" class="headerlink" title="10. 文稿发布和分享"></a>10. 文稿发布和分享</h3><p>在您使用 Cmd Markdown 记录，创作，整理，阅读文稿的同时，我们不仅希望它是一个有力的工具，更希望您的思想和知识通过这个平台，连同优质的阅读体验，将他们分享给有相同志趣的人，进而鼓励更多的人来到这里记录分享他们的思想和知识，尝试点击 <i class="icon-share"></i> (Ctrl+Alt+P) 发布这份文档给好友吧！</p>
+<hr>
+<p>再一次感谢您花费时间阅读这份欢迎稿，点击 <i class="icon-file"></i> (Ctrl+Alt+N) 开始撰写新的文稿吧！祝您在这里记录、阅读、分享愉快！</p>
+<p>作者 <a href="http://weibo.com/ghosert" target="_blank" rel="noopener">@ghosert</a><br>2015 年 06月 15日    </p>
+<p>[^LaTeX]: 支持 <strong>LaTeX</strong> 编辑显示支持，例如：$\sum_{i=1}^n a_i=0$， 访问 <a href="http://meta.math.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference" target="_blank" rel="noopener">MathJax</a> 参考更多使用方法。</p>
+<p>[^code]: 代码高亮功能支持包括 Java, Python, JavaScript 在内的，<strong>四十一</strong>种主流编程语言。</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/python/">python</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/pyhon2-x-编码/">pyhon2.x,编码</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2018/09/23/hello-world/" title="Hello World" itemprop="url">Hello World</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="michaelcheng" target="_blank" itemprop="author">michaelcheng</a>
+		
+  <p class="article-time">
+    <time datetime="2018-09-23T05:28:12.521Z" itemprop="datePublished"> Published 2018-09-23</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/05/13/hexo搭建博客/" title="hexo搭建博客" itemprop="url">hexo搭建博客</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="michaelcheng" target="_blank" itemprop="author">michaelcheng</a>
+		
+  <p class="article-time">
+    <time datetime="2016-05-13T08:17:10.000Z" itemprop="datePublished"> Published 2016-05-13</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="hexo-github搭载博客"><a href="#hexo-github搭载博客" class="headerlink" title="hexo,github搭载博客"></a>hexo,github搭载博客</h2><p>捣鼓了1天，终于用hexo，github搭好了自己的博客。之前在学python,参考网上的资源，用django写过一个博客，但是又要买域名，部署又不很方便。于是就只能在本地玩玩了。在网上看到有用hexo,github搭博客的，看看效果不错。网上教程也挺多，于是开始搞起。</p>
+<p>准备</p>
+<h3 id="1-静态博客和动态博客"><a href="#1-静态博客和动态博客" class="headerlink" title="1. 静态博客和动态博客"></a>1. 静态博客和动态博客</h3><p>所谓静态博客，它是在写好文章后，在本地生成静态页面后再上传到服务器（Jekyll在Github Page上的例子有点特殊，后面会讲到），而不是像传统的Wordpress等基于动态语言、数据库博客那样在访问的时候从数据库读取数据动态生成页面。静态博客最大的优点是速度快，对网站使用的空间要求也不高，想找一个不支持静态页面的空间也是挺难的，缺点嘛，功能没有Wordpress等传统博客那么强。静态博客的”静态”主要体现在浏览者的角度，而不是写作者的角度，其最终的HTML文件，也是计算机生成的。静态博客与动态博客的差别就好像去超市里买一罐咖啡与去咖啡厅点一杯咖啡的差别。</p>
+<p>在静态博客出现之前，更多的人选择的是传统的动态博客。传统的动态博客一般有2种常见的方法：</p>
+<blockquote>
+<ul>
+<li>自建博客网站：需要了解数据库、HTML/CSS和PHP等很多Web编程知识</li>
+<li>注册公共博客：一般要受制于公共博客服务提供商的博客创作工具的写作效率</li>
+</ul>
+</blockquote>
+<p>实际上大部分博主写博客仅仅是个人性质的，文章数量不多，流量也不大，所以并不需要自己建站那么复杂。但如果注册公共博客，又会非常依赖服务提供商所提供的主题、功能和写作工具，缺少自由度。静态博客就可以很好的弥补两者的缺点。静态博客和传统博客最大的区别就在于写作与发布的过程有所不同。<br>静态博客首先会在本地进行离线写作，然后通过工具将离线本地作品转化为HTML网页发布到在线网站上<br>动态博客首先要建立网站（当然也可以注册一个公共博客服务），然后在线完成博客的编辑和发布<br>静态博客可以让博主更专注于写作，而不是花费很多精力在建站技术和写作工具上：</p>
+<blockquote>
+<ul>
+<li>博主不需要折腾各种建站技术，任何支持静态网页的主机空间和云存储空间都可以拿来发布博客</li>
+<li>博主可以自由选择自己喜欢的本地写作工具，而不需要受制于在线博客写作工具的质量火热用户体验</li>
+</ul>
+</blockquote>
+<h2 id="GitHub-与-静态博客"><a href="#GitHub-与-静态博客" class="headerlink" title="GitHub 与 静态博客"></a>GitHub 与 静态博客</h2><h3 id="2-静态博客和动态博客"><a href="#2-静态博客和动态博客" class="headerlink" title="2. 静态博客和动态博客"></a>2. 静态博客和动态博客</h3><p>静态博客是个新生事物。静态博客的流行跟著名的开源社区Github的支持是分不开的。因此，绝大部分静态博客平台设计得还是比较极客，更适合有一定编程技能的人来使用，并不适合完全零起点的完全没有编程知识的普通用户。而Github除提供在线Markdown编辑器之外，还提供了Github Page服务，可以将用户托管在Github上的Markdown博客发布为静态网站。博主完全可以将自己的博客站免费寄放在Github上。此外，通过Github发布博客，还有一个额外的好处，那就是你的博客文章可以用Git来管理，这样你就可以在Github上获得博客文章的完整发布历史（像程序员管理源代码一样），并且可以随时获取历史版本或回退和回退到特定的版本上，相当于有了强大的备份系统。</p>
+<hr>
+<p>Hexo<br>hexo出自台湾大学生tommy351之手，是一个基于Node.js的静态博客程序，其编译上百篇文字只需要几秒。，其编译上百篇文字只需要几秒。hexo生成的静态网页可以直接放到GitHub Pages，BAE，SAE等平台上。</p>
+<p><strong>本着不花钱，爱折腾的原则，本人选择Hexo加上GitPages的方法搭建自己的独立博客。</strong></p>
+<h2 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h2><h3 id="1-Hexo环境安装"><a href="#1-Hexo环境安装" class="headerlink" title="1. Hexo环境安装"></a>1. Hexo环境安装</h3><blockquote>
+<ul>
+<li>在Hexo的官网详细介绍了Hexo的安装和使用，安装Hexo的前提是需要先安装Node js和Git。</li>
+</ul>
+</blockquote>
+<h3 id="2-Ubuntu-安装NodeJS"><a href="#2-Ubuntu-安装NodeJS" class="headerlink" title="2. Ubuntu 安装NodeJS"></a>2. Ubuntu 安装NodeJS</h3><p>在ubuntu上安装Node.js也有很多方法，最常见的有两种：一种是通过Node.js的官网下载源码编译安装,另一种就是按照Hexo官网介绍的方法安装,这边以第二中方式为例.<br>下载和安装nvm,nvm介绍请看:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#这边可以使用curl也可以通过wget</span><br><span class="line">$ curl https://raw.github.com/creationix/nvm/master/install.sh | sh</span><br><span class="line"># 不过,我只有wget方法能成功</span><br><span class="line">$ wget -qO- https://raw.github.com/creationix/nvm/master/install.sh | sh&apos;</span><br></pre></td></tr></table></figure></p>
+<p>nvm安装好了之后,通过nvm安装node.js<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#0.12 为node.js版本,Current Version: v0.12.7</span><br><span class="line">$nvm isntall 0.12</span><br></pre></td></tr></table></figure></p>
+<p>至此Nodejs安装完毕,我们可以通过命令查看nodejs 版本<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wyq@wyq-m81 ~ $ node -v</span><br><span class="line">v0.10.25</span><br></pre></td></tr></table></figure></p>
+<h3 id="3-Ubuntu安装Git"><a href="#3-Ubuntu安装Git" class="headerlink" title="3.Ubuntu安装Git"></a>3.Ubuntu安装Git</h3><p>在ubuntu中安装git还是相当简单的,直接使用包管理器进行安装就好:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$sudo apt-get install git</span><br><span class="line">$sudo apt-get install git-core</span><br></pre></td></tr></table></figure></p>
+<p>Nodejs 和 git都已经安装好了,接下来就可安装我们的主角Hexo了<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g hexo-cli</span><br></pre></td></tr></table></figure></p>
+<p>安装过程有点慢,这个时候你可以问候一下GFW.</p>
+<h3 id="4-Github-pages-仓库创建"><a href="#4-Github-pages-仓库创建" class="headerlink" title="4.Github pages 仓库创建"></a>4.Github pages 仓库创建</h3><p>安装好Hexo后,就该另一个主角Github pages 登场了.关于Github pages的介绍,请看这里,它主要的作用是github给你或你的团队展示你的项目的地方,我们用这个来放我的博客简直再适合不过了.<br>Github pages本质还是你github上的一个repository,只不过它的命名规则是[suername].github.io的形式,并且每个github只能有这么一个这样的仓库.创建好这样的仓库后就可以在浏览器地址栏输入[username].github.io进行访问了.</p>
+<h2 id="执行"><a href="#执行" class="headerlink" title="执行"></a>执行</h2><p>Hexo和Github pages 准备好以后,我们就可以正式开始博客建立了.</p>
+<blockquote>
+<ul>
+<li>初始化本地博客目录:<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#在home新建一个文件夹,用于本地存放博客</span><br><span class="line">$mkdir Blogs</span><br><span class="line">$cd Blogs</span><br><span class="line">#用hexo命令在Blogs目录中初始化环境</span><br><span class="line">$hexo init</span><br><span class="line">$npm install</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</blockquote>
+<p>这个时候,其实Hexo为我们生成了一个默认的名为HelloWorld的一篇博客,接下来我们看下这篇博客</p>
+<blockquote>
+<ul>
+<li>生成静态文件<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#使用hexo generate命令可以将我们编写的markdown文件转换成html文件</span><br><span class="line">$hexo generate</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>本地服务开启<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wyq@wyq-m81 ~/Blog $ hexo server</span><br><span class="line">INFO  Hexo is running at http://0.0.0.0:4000/.    Press Ctrl+C to stop</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</blockquote>
+<p>这个时候在浏览器地址栏输入localhost:4000就可看到Hexo为我们生成的这边博客了大概就是这个样子.<br>到此我们已经把基本建博客的流程走过一遍了,怎么样,是不是很easy呀.接下来我们完成三个事情:创建一个篇新的博客,给博客换个主题,上传到Github pages.</p>
+<blockquote>
+<ul>
+<li>创建新的博客<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">#使用hexo new [postname]新建一篇博客</span><br><span class="line">$hexo new firstblog</span><br><span class="line">#完成之后,进入到source/_psots目录就可以看到我们刚才新建的博客了</span><br><span class="line">$cd source/_posts</span><br><span class="line">$ll</span><br><span class="line">drwxr-xr-x 2 wyq wyq 4096 Jul 30 11:25 .</span><br><span class="line">drwxr-xr-x 3 wyq wyq 4096 Jul 29 16:17 ..</span><br><span class="line">-rw-r--r-- 1 wyq wyq   53 Jul 30 11:25 firstBlog.md</span><br><span class="line">-rw-r--r-- 1 wyq wyq  852 Jul 29 18:04 HelloWorld.md</span><br><span class="line">#firstBlog.md就是我们刚才新建的一篇博客</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</blockquote>
+<p>博客文章都是md格式的markdown文件,我们打开来看下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#Hexo默认为我们生成了三行</span><br><span class="line">title: firstBlog #这边博客的标题</span><br><span class="line">date: 2015-07-30 11:25:44 #博客创建时间</span><br><span class="line">tags: #博客的tag</span><br></pre></td></tr></table></figure></p>
+<p>那我们只需要使用markdown语法在这个文件里面写我们的博客就ok了,这里推荐在线markdwon编辑器,CMD markdown,至于markdown语法,我们只需要了解常用的就行了,学习成本几乎等于0,<a href="https://help.github.com/articles/getting-started-with-writing-and-formatting-on-github/" target="_blank" rel="noopener">Github markdown</a>语法</p>
+<h3 id="5-更改博客主题"><a href="#5-更改博客主题" class="headerlink" title="5.更改博客主题"></a>5.更改博客主题</h3><p>Hexo 有丰富的主题支持,这也是我选择它的原因之一,在这里列出了所有的Hexo 主题,大家可以选择自己喜欢的使用.我这里以Yilia为例<br>在我们使用hexo init 初始化本地博客环境后,会看到如下的文件目录结构:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── _config.yml</span><br><span class="line">├── package.json</span><br><span class="line">├── scaffolds</span><br><span class="line">├── scripts</span><br><span class="line">├── source</span><br><span class="line">|   ├── _drafts</span><br><span class="line">|   └── _posts</span><br><span class="line">└── themes</span><br></pre></td></tr></table></figure></p>
+<p>这边先直介绍其中几个:</p>
+<blockquote>
+<ul>
+<li>_config.yml文件整个博客的配置文件,</li>
+<li>source/_posts文件夹包含了当前整个博客的所有文章</li>
+<li>themes 文件夹包含了当前的主题文件.</li>
+</ul>
+</blockquote>
+<p>我们要使用Yilia主题</p>
+<ul>
+<li><p>[x] 在当前目录(这里就是Blogs)中,clone Yilla 代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git clone https://github.com/litten/hexo-theme-yilia.git themes/yilia</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>[x] 更改_config.yml文件,在最后加入使用主题语句</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">theme: yilia</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>[x] 进入到主题目录,编辑主题配置文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$cd themes/yilia</span><br><span class="line">$vim _congif.yml</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>[x] 主题文件的配置说明</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"># Header</span><br><span class="line">menu:</span><br><span class="line">  主页: /</span><br><span class="line">  所有文章: /archives</span><br><span class="line">  # 随笔: /tags/随笔</span><br><span class="line"></span><br><span class="line"># SubNav</span><br><span class="line">subnav:</span><br><span class="line">  github: &quot;#&quot;</span><br><span class="line">  weibo: &quot;#&quot;</span><br><span class="line">  rss: &quot;#&quot;</span><br><span class="line">  zhihu: &quot;#&quot;</span><br><span class="line">  #douban: &quot;#&quot;</span><br><span class="line">  #mail: &quot;#&quot;</span><br><span class="line">  #facebook: &quot;#&quot;</span><br><span class="line">  #google: &quot;#&quot;</span><br><span class="line">  #twitter: &quot;#&quot;</span><br><span class="line">  #linkedin: &quot;#&quot;</span><br><span class="line"></span><br><span class="line">rss: /atom.xml</span><br><span class="line"></span><br><span class="line"># Content</span><br><span class="line">excerpt_link: more</span><br><span class="line">fancybox: true</span><br><span class="line">mathjax: true</span><br><span class="line"></span><br><span class="line"># Miscellaneous</span><br><span class="line">google_analytics: &apos;&apos;</span><br><span class="line">favicon: /favicon.png</span><br><span class="line"></span><br><span class="line">#你的头像url</span><br><span class="line">avatar: &quot;&quot;</span><br><span class="line">#是否开启分享</span><br><span class="line">share: true</span><br><span class="line">#是否开启多说评论，填写你在多说申请的项目名称 duoshuo: duoshuo-key</span><br><span class="line">#若使用disqus，请在博客config文件中填写disqus_shortname，并关闭多说评论</span><br><span class="line">duoshuo: true</span><br><span class="line">#是否开启云标签</span><br><span class="line">tagcloud: true</span><br><span class="line"></span><br><span class="line">#是否开启友情链接</span><br><span class="line">#不开启——</span><br><span class="line">#friends: false</span><br><span class="line">#开启——</span><br><span class="line">friends:</span><br><span class="line">  奥巴马的博客: http://localhost:4000/</span><br><span class="line">  卡卡的美丽传说: http://localhost:4000/</span><br><span class="line">  本泽马的博客: http://localhost:4000/</span><br><span class="line">  吉格斯的博客: http://localhost:4000/</span><br><span class="line">  习大大大不同: http://localhost:4000/</span><br><span class="line">  托蒂的博客: http://localhost:4000/</span><br><span class="line"></span><br><span class="line">#是否开启“关于我”。</span><br><span class="line">#不开启——</span><br><span class="line">#aboutme: false</span><br><span class="line">#开启——</span><br><span class="line">aboutme: 我是谁，我从哪里来，我到哪里去？我就是我，是颜色不一样的吃货…</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>生成静态文件,在本地预览<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$hexo generate</span><br><span class="line">$hexo server</span><br></pre></td></tr></table></figure></p>
+<p>**ok,大功告成,就差把博客部署到github.io了</p>
+<p>##将博客部署到github pages中<br>在博客配置文件_config.yml中,有个deployment一节,在这边我们进行github pages 的配置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># Deployment</span><br><span class="line">## Docs: http://hexo.io/docs/deployment.html</span><br><span class="line">deploy:</span><br><span class="line">  type: git #注意,这边是git不是github,hexo 3.0以后就要求使用git,不然会出现deploy失败情况.</span><br><span class="line">  repo: https://github.com/YanceyWang/YanceyWang.github.io</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure></p>
+<p>配置好了之后,就可以吧我们博客deploy到github 上啦.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$hexo clean</span><br><span class="line">$hexo generate</span><br><span class="line">$hexo deploy</span><br></pre></td></tr></table></figure></p>
+<p>之后,在地址栏输入[username.github.io] 就可以访问你的博客了.</p>
+<ul>
+<li style="list-style: none"><input type="checkbox"> 参考了网上的一些博客教程，把搭建博客的过程记录下来。本人也是初学者，不足之处，还望斧正。希望和大家一起交流学习。</li>
+</ul>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/hexo/">hexo</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/hexo-博客/">hexo,博客</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+
+</div>
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/Nosql/" title="Nosql">Nosql<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/blogs/" title="blogs">blogs<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/hexo/" title="hexo">hexo<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/python/" title="python">python<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/博客/" title="博客">博客<sup>1</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/MongoDB/" title="MongoDB">MongoDB<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/blogs/" title="blogs">blogs<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/博客-备份/" title="博客,备份">博客,备份<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/python-多线程-多线程/" title="python,多线程,多线程">python,多线程,多线程<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/python-线程池/" title="python,线程池">python,线程池<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/hexo-博客/" title="hexo,博客">hexo,博客<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/pyhon2-x-编码/" title="pyhon2.x,编码">pyhon2.x,编码<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://coderq.com" target="_blank" title="一个面向程序员交流分享的新一代社区">码农圈</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> stay hungry, stay foolish. <br/>
+			to be a better me, talk is cheap show me the code.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		<a href="https://github.com/michaelcjl" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		<a href="https://www.douban.com/people/156274693" target="_blank" class="icon-douban" title="豆瓣"></a>
+		
+		
+		<a href="http://www.zhihu.com/people/bai-yun-80-61" target="_blank" class="icon-zhihu" title="知乎"></a>
+		
+		
+		
+		<a href="mailto:michaelchengjl@163.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2018 
+		
+		<a href="/about" target="_blank" title="michaelcheng">michaelcheng</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+ </html>

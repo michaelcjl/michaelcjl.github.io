@@ -1,0 +1,513 @@
+
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+    <title>python线程池 | michael&#39;s note</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="michaelcheng">
+    
+
+    
+    <meta name="description" content="python线程池1.为什么需要线程池　目前的大多数网络服务器，包括Web服务器、Email服务器以及数据库服务器等都具有一个共同点，就是单位时间内必须处理数目巨大的连接请求，但处理时间却相对较短。　　传统多线程方案中我们采用的服务器模型则是一旦接受到请求之后，即创建一个新的线程，由该线程执行任务。任务执行完毕后，线程退出，这就是是“即时创建， 即时销毁”的策略。尽管与创建进程相比，创建线程的时间">
+<meta name="keywords" content="python,线程池">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python线程池">
+<meta property="og:url" content="http://yoursite.com/2018/09/23/python线程池/index.html">
+<meta property="og:site_name" content="michael&#39;s note">
+<meta property="og:description" content="python线程池1.为什么需要线程池　目前的大多数网络服务器，包括Web服务器、Email服务器以及数据库服务器等都具有一个共同点，就是单位时间内必须处理数目巨大的连接请求，但处理时间却相对较短。　　传统多线程方案中我们采用的服务器模型则是一旦接受到请求之后，即创建一个新的线程，由该线程执行任务。任务执行完毕后，线程退出，这就是是“即时创建， 即时销毁”的策略。尽管与创建进程相比，创建线程的时间">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2016-05-31T21:21:52.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="python线程池">
+<meta name="twitter:description" content="python线程池1.为什么需要线程池　目前的大多数网络服务器，包括Web服务器、Email服务器以及数据库服务器等都具有一个共同点，就是单位时间内必须处理数目巨大的连接请求，但处理时间却相对较短。　　传统多线程方案中我们采用的服务器模型则是一旦接受到请求之后，即创建一个新的线程，由该线程执行任务。任务执行完毕后，线程退出，这就是是“即时创建， 即时销毁”的策略。尽管与创建进程相比，创建线程的时间">
+
+    
+    <link rel="alternative" href="/atom.xml" title="michael&#39;s note" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="michael&#39;s note" title="michael&#39;s note"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="michael&#39;s note">michael&#39;s note</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:yoursite.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2018/09/23/python线程池/" title="python线程池" itemprop="url">python线程池</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="michaelcheng" target="_blank" itemprop="author">michaelcheng</a>
+		
+  <p class="article-time">
+    <time datetime="2018-09-23T06:12:20.256Z" itemprop="datePublished"> Published 2018-09-23</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#python线程池"><span class="toc-number">1.</span> <span class="toc-text">python线程池</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-为什么需要线程池"><span class="toc-number">1.1.</span> <span class="toc-text">1.为什么需要线程池</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-构建线程池框架"><span class="toc-number">1.2.</span> <span class="toc-text">2.构建线程池框架</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-线程池的python实现"><span class="toc-number">1.3.</span> <span class="toc-text">3.线程池的python实现</span></a></li></ol></li></ol>
+		
+		</div>
+		
+		<h1 id="python线程池"><a href="#python线程池" class="headerlink" title="python线程池"></a>python线程池</h1><h2 id="1-为什么需要线程池"><a href="#1-为什么需要线程池" class="headerlink" title="1.为什么需要线程池"></a>1.为什么需要线程池</h2><p>　目前的大多数网络服务器，包括Web服务器、Email服务器以及数据库服务器等都具有一个共同点，就是单位时间内必须处理数目巨大的连接请求，但处理时间却相对较短。<br>　　传统多线程方案中我们采用的服务器模型则是一旦接受到请求之后，即创建一个新的线程，由该线程执行任务。任务执行完毕后，线程退出，这就是是“即时创建， 即时销毁”的策略。尽管与创建进程相比，创建线程的时间已经大大的缩短，但是如果提交给线程的任务是执行时间较短，而且执行次数极其频繁，那么服务器将处于不停的创建线程，销毁线程的状态。<br>　　我们将传统方案中的线程执行过程分为三个过程：T1、T2、T3：<br>　　T1：线程创建时间<br>　　T2：线程执行时间，包括线程的同步等时间<br>　　T3：线程销毁时间</p>
+<p>　　那么我们可以看出，线程本身的开销所占的比例为(T1+T3) / (T1+T2+T3)。如果线程执行的时间很短的话，这比开销可能占到20%-50%左右。如果任务执行时间很频繁的话，这笔开销将是不可忽略的。<br>　　除此之外，线程池能够减少创建的线程个数。通常线程池所允许的并发线程是有上界的，如果同时需要并发的线程数超过上界，那么一部分线程将会等待。而传统方案中，如果同时请求数目为2000，那么最坏情况下，系统可能需要产生2000个线程。尽管这不是一个很大的数目，但是也有部分机器可能达不到这种要求。<br>　　<strong>因此线程池的出现正是着眼于减少线程池本身带来的开销。</strong>线程池采用预创建的技术，在应用程序启动之后，将立即创建一定数量的线程(N1)，放入空闲队列 中。这些线程都是处于阻塞（Suspended）状态，不消耗CPU，但占用较小的内存空间。当任务到来后，缓冲池选择一个空闲线程，把任务传入此线程中运行。当N1个线程都在处理任务后，缓冲池自动创建一定数量的新线程，用于处理更多的任务。在任务执行完毕后线程也不退出，而是继续保持在池中等待下一次的任务。当系统比较空闲时，大部分线程都一直处于暂停状态，线程池自动销毁一部分线程，回收系统资源。<br>　　基于这种预创建技术，线程池将线程创建和销毁本身所带来的开销分摊到了各个具体的任务上，执行次数越多，每个任务所分担到的线程本身开销则越小，不过我们另外可能需要考虑进去线程之间同步所带来的开销。</p>
+<h2 id="2-构建线程池框架"><a href="#2-构建线程池框架" class="headerlink" title="2.构建线程池框架"></a>2.构建线程池框架</h2><p>一般线程池都必须具备下面几个组成部分：</p>
+<ul>
+<li>线程池管理器:用于创建并管理线程池</li>
+<li>工作线程: 线程池中实际执行的线程</li>
+<li>任务接口: 尽管线程池大多数情况下是用来支持网络服务器，但是我们将线程执行的任务抽象出来，形成任务接口，从而是的线程池与具体的任务无关。</li>
+<li>任务队列:线程池的概念具体到实现则可能是队列，链表之类的数据结构，其中保存执行线程。<br>　　<strong>我们把任务放进队列中去，然后开N个线程，每个线程都去队列中取一个任务，执行完了之后告诉系统说我执行完了，然后接着去队列中取下一个任务，直至队列中所有任务取空，退出线程。</strong>
+　　<h2 id="3-线程池的python实现"><a href="#3-线程池的python实现" class="headerlink" title="3.线程池的python实现"></a>3.线程池的python实现</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line"># !/usr/bin/env python</span><br><span class="line"># -*- coding:utf-8 -*-</span><br><span class="line"># ref_blog:http://www.open-open.com/home/space-5679-do-blog-id-3247.html</span><br><span class="line"></span><br><span class="line">import Queue</span><br><span class="line">import threading</span><br><span class="line">import time</span><br><span class="line"></span><br><span class="line">class WorkManager(object):</span><br><span class="line">    def __init__(self, work_num=1000,thread_num=2):</span><br><span class="line">        self.work_queue = Queue.Queue()</span><br><span class="line">        self.threads = []</span><br><span class="line">        self.__init_work_queue(work_num)</span><br><span class="line">        self.__init_thread_pool(thread_num)</span><br><span class="line"></span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">        初始化线程</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    def __init_thread_pool(self,thread_num):</span><br><span class="line">        for i in range(thread_num):</span><br><span class="line">            self.threads.append(Work(self.work_queue))</span><br><span class="line"></span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">        初始化工作队列</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    def __init_work_queue(self, jobs_num):</span><br><span class="line">        for i in range(jobs_num):</span><br><span class="line">            self.add_job(do_job, i)</span><br><span class="line"></span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">        添加一项工作入队</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    def add_job(self, func, *args):</span><br><span class="line">        self.work_queue.put((func, list(args)))#任务入队，Queue内部实现了同步机制</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">        检查剩余队列任务</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    def check_queue(self):</span><br><span class="line">        return self.work_queue.qsize()</span><br><span class="line"></span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">        等待所有线程运行完毕</span><br><span class="line">    &quot;&quot;&quot;   </span><br><span class="line">    def wait_allcomplete(self):</span><br><span class="line">        for item in self.threads:</span><br><span class="line">            if item.isAlive():item.join()</span><br><span class="line"></span><br><span class="line">class Work(threading.Thread):</span><br><span class="line">    def __init__(self, work_queue):</span><br><span class="line">        threading.Thread.__init__(self)</span><br><span class="line">        self.work_queue = work_queue</span><br><span class="line">        self.start()</span><br><span class="line"></span><br><span class="line">    def run(self):</span><br><span class="line">        #死循环，从而让创建的线程在一定条件下关闭退出</span><br><span class="line">        while True:</span><br><span class="line">            try:</span><br><span class="line">                do, args = self.work_queue.get(block=False)#任务异步出队，Queue内部实现了同步机制</span><br><span class="line">                do(args)</span><br><span class="line">                self.work_queue.task_done()#通知系统任务完成</span><br><span class="line">            except Exception,e:</span><br><span class="line">                print str(e)</span><br><span class="line">                break</span><br><span class="line"></span><br><span class="line">#具体要做的任务</span><br><span class="line">def do_job(args):</span><br><span class="line">    print args</span><br><span class="line">    time.sleep(0.1)#模拟处理时间</span><br><span class="line">    print threading.current_thread(), list(args)</span><br><span class="line"></span><br><span class="line">if __name__ == &apos;__main__&apos;:</span><br><span class="line">    start = time.time()</span><br><span class="line">    work_manager =  WorkManager(10, 2)#或者work_manager =  WorkManager(10000, 20)</span><br><span class="line">    work_manager.wait_allcomplete()</span><br><span class="line">    end = time.time()</span><br><span class="line">    print &quot;cost all time: %s&quot; % (end-start)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>Work类是一个Python线程池，不断地从workQueue队列中获取需要执行的任务，执行之，并将结果写入到resultQueue中。这里的workQueue和resultQueue都是线程安全的，其内部对各个线程的操作做了互斥。当从workQueue中获取任务超时，则线程结束。<br>　　WorkerManager负责初始化Python线程池，提供将任务加入队列和获取结果的接口，并能等待所有任务完成。<br>　　在 Python 中使用线程时，这个模式是一种很常见的并且推荐使用的方式。具体工作步骤描述如下：</p>
+<pre><code>1.创建一个 Queue.Queue() 的实例，然后使用数据对它进行填充。
+2.将经过填充数据的实例传递给线程类，后者是通过继承 threading.Thread 的方式创建的。
+3.生成守护线程池。
+4.每次从队列中取出一个项目，并使用该线程中的数据和 run 方法以执行相应的工作。
+5.在完成这项工作之后，使用 queue.task_done() 函数向任务已经完成的队列发送一个信号。
+6.对队列执行 join 操作，实际上意味着等到队列为空，再退出主程序。
+</code></pre><p>　　在使用这个模式时需要注意一点：通过将守护线程设置为 true，将允许主线程或者程序仅在守护线程处于活动状态时才能够退出。这种方式创建了一种简单的方式以控制程序流程，因为在退出之前，您可以对队列执行 join 操作、或者等到队列为空。</p>
+<pre><code>join()保持阻塞状态，直到处理了队列中的所有项目为止。在将一个项目添加到该队列时，未完成的任务的总数就会增加。当使用者线程调用 task_done() 以表示检索了该项目、并完成了所有的工作时，那么未完成的任务的总数就会减少。当未完成的任务的总数减少到零时，join() 就会结束阻塞状态。
+</code></pre>  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/python/">python</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/python-线程池/">python,线程池</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://yoursite.com/2018/09/23/python线程池/" data-title="python线程池 | michael&#39;s note" data-tsina="" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2018/09/23/python多线程VS多进程/" title="python多线程 VS 多进程">
+  <strong>上一篇：</strong><br/>
+  <span>
+  python多线程 VS 多进程</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2018/09/23/blogs使用说明/"  title="blogs使用说明">
+ <strong>下一篇：</strong><br/> 
+ <span>blogs使用说明
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#python线程池"><span class="toc-number">1.</span> <span class="toc-text">python线程池</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-为什么需要线程池"><span class="toc-number">1.1.</span> <span class="toc-text">1.为什么需要线程池</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-构建线程池框架"><span class="toc-number">1.2.</span> <span class="toc-text">2.构建线程池框架</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-线程池的python实现"><span class="toc-number">1.3.</span> <span class="toc-text">3.线程池的python实现</span></a></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/Nosql/" title="Nosql">Nosql<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/blogs/" title="blogs">blogs<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/hexo/" title="hexo">hexo<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/python/" title="python">python<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/博客/" title="博客">博客<sup>1</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/MongoDB/" title="MongoDB">MongoDB<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/blogs/" title="blogs">blogs<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/博客-备份/" title="博客,备份">博客,备份<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/python-多线程-多线程/" title="python,多线程,多线程">python,多线程,多线程<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/python-线程池/" title="python,线程池">python,线程池<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/hexo-博客/" title="hexo,博客">hexo,博客<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/pyhon2-x-编码/" title="pyhon2.x,编码">pyhon2.x,编码<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://coderq.com" target="_blank" title="一个面向程序员交流分享的新一代社区">码农圈</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> stay hungry, stay foolish. <br/>
+			to be a better me, talk is cheap show me the code.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		<a href="https://github.com/michaelcjl" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		<a href="https://www.douban.com/people/156274693" target="_blank" class="icon-douban" title="豆瓣"></a>
+		
+		
+		<a href="http://www.zhihu.com/people/bai-yun-80-61" target="_blank" class="icon-zhihu" title="知乎"></a>
+		
+		
+		
+		<a href="mailto:michaelchengjl@163.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2018 
+		
+		<a href="/about" target="_blank" title="michaelcheng">michaelcheng</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
